@@ -1,0 +1,43 @@
+<section class="section">
+  <ngx-spinner></ngx-spinner>
+  <div class="container has-text-centered">
+    <h1 class="title">Bank Details</h1>
+  </div>
+</section>
+<div class="container">
+  <div class="columns is-mobile is-centered is-vertically-centered">
+    <div class="column is-three-fifths">
+      <div class="card">
+        <header class="card-header">
+          <p class="card-header-title">
+            {{ bankDetail.bank_name }}
+          </p>
+        </header>
+        <div class="card-content">
+          <div class="content columns is-multiline is-mobile">
+            <div class="column is-one-quarter has-text-weight-bold">
+              Bank ID :
+            </div>
+            <div class="column is-one-quarter">{{ bankDetail.bank_id }}</div>
+            <div class="column is-one-quarter has-text-weight-bold">IFSC :</div>
+            <div class="column is-one-quarter">{{ bankDetail.ifsc }}</div>
+            <div class="column is-one-quarter has-text-weight-bold">
+              Address :
+            </div>
+            <div class="column is-three-quarters">{{ bankDetail.address }}</div>
+            <div class="column is-one-quarter has-text-weight-bold">
+              District :
+            </div>
+            <div class="column is-three-quarters">
+              {{ bankDetail.district }}
+            </div>
+            <div class="column is-one-quarter has-text-weight-bold">
+              State :
+            </div>
+            <div class="column is-three-quarters">{{ bankDetail.state }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

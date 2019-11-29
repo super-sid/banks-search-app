@@ -1,0 +1,41 @@
+<section class="section">
+  <ngx-spinner></ngx-spinner>
+  <div class="container has-text-centered">
+    <h1 class="title">Search Banks</h1>
+  </div>
+</section>
+<div class="container">
+  <div class="columns is-mobile is-centered is-vertically-centered">
+    <div class="column is-one-fifth">
+      <div class="field is-pulled-right">
+        <div class="control">
+          <div class="select is-info">
+            <select
+              [(ngModel)]="cityValue"
+              (ngModelChange)="citySelectChange($event)"
+            >
+              <option *ngFor="let city of cities" [ngValue]="city.value">{{
+                city.name
+              }}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="column is-three-fifths">
+      <div class="control">
+        <input
+          (input)="searchQuery($event)"
+          class="input"
+          type="text"
+          placeholder="Search Banks..."
+        />
+      </div>
+    </div>
+  </div>
+  <div *ngIf="banksFound" class="columns is-mobile">
+    <div class="column is-10 is-offset-1">
+      <app-search-result [result]="bankDetails"></app-search-result>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,62 @@
+<div class="columns is-mobile is-multiline">
+  <div class="column is-2 is-offset-9">
+    <p class="is-size-6 is-pulled-right">No. of Results</p>
+  </div>
+  <div class="column is-1">
+    <div class="field is-pulled-left">
+      <div class="control">
+        <div class="select is-info">
+          <select
+            [(ngModel)]="pageResults"
+            (ngModelChange)="paginateSelectChange($event)"
+          >
+            <option *ngFor="let pageN of paginateValues" [ngValue]="pageN">{{
+              pageN
+            }}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="column is-full card">
+    <table class="table">
+      <thead>
+        <tr class="has-text-centered">
+          <th>Bank Name</th>
+          <th>IFSC</th>
+          <th>Branch</th>
+          <th>District</th>
+          <th>Bookmark</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="
+            let bank of result
+              | paginate: { itemsPerPage: pageResults, currentPage: p }
+          "
+          class="has-text-centered"
+        >
+          <td>
+            <a routerLink="/banks/{{ bank.ifsc }}">{{ bank.bank_name }}</a>
+          </td>
+          <td>{{ bank.ifsc }}</td>
+          <td>{{ bank.branch }}</td>
+          <td>{{ bank.district }}</td>
+          <td>
+            <ui-switch
+              [checked]="bank.bookMarked"
+              (change)="addBookmark($event, bank)"
+            ></ui-switch>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="column is-full">
+    <pagination-controls
+      class="my-pagination"
+      (pageChange)="p = $event"
+    ></pagination-controls>
+  </div>
+</div>
